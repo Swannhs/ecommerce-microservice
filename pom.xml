@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Root project coordinates -->
+    <groupId>com.swann</groupId>
+    <artifactId>ecommerce-microservice</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <!-- Common properties for child projects -->
+    <properties>
+        <java.version>11</java.version>
+        <spring.boot.version>2.5.4</spring.boot.version>
+        <!-- Add more properties as needed -->
+    </properties>
+
+    <modules>
+        <!-- List the child projects here -->
+        <module>eureka-server</module>
+        <!-- Add more modules as needed -->
+    </modules>
+
+    <!-- Add common dependencies and plugin configurations if needed -->
+
+</project>
