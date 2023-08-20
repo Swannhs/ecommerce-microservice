@@ -18,6 +18,7 @@
 
     <modules>
         <!-- List the child projects here -->
+        <module>config-server</module>
         <module>eureka-server</module>
         <!-- Add more modules as needed -->
     </modules>

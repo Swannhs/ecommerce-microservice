@@ -1,8 +1,29 @@
 version: '3'
 services:
+  config-server:
+    build:
+      context: ./config-server
+    ports:
+      - "8888:8888"
+    restart: on-failure
+    environment:
+      - SPRING_PROFILES_ACTIVE=native
+      - CONFIG_SERVER_SEARCH_LOCATIONS=classpath:/config
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8888/actuator/health || exit 1" ]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
   eureka-server:
     build:
       context: ./eureka-server
       dockerfile: Dockerfile
     ports:
       - "8761:8761"
+    depends_on:
+      - config-server
+    environment:
+      - EUREKA_INSTANCE_HOSTNAME=eureka-server
+      - CONFIG_SERVER_URL=http://config-server:8888
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka-server:8761/eureka/
